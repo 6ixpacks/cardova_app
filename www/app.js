@@ -1,6 +1,6 @@
 
 const SB = 'https://sfimdlwlfpzrztuucvxk.supabase.co';
-const KEY = 'sb_publishable_lLG4-tqcfidFxdLqltZqGQ_2NKkihSI';
+const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNmaW1kbHdsZnB6cnp0dXVjdnhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUyMTAxMDksImV4cCI6MjExMDc4NjEwOX0.JTwOCPkeG6PzHgmUzS5ZiDRoH0Rtt6ZeqF4zz8n1v1w';
 // ======================================================================
 const CATS = ['Accident', 'Fighting', 'Rioting', 'Robbery', 'Fire', 'Other'];
 const $ = s => document.querySelector(s);
