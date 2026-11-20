@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.davidukanwoke.citizenreport" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Citizen Report</name>
+  <description>Citizens Reporting Solution: report and browse incidents.</description>
+  <author email="davidukanwoke@gmail.com">David Ukanwoke</author>
+  <content src="index.html" />
+  <access origin="*" />
+  <allow-navigation href="*" />
+  <allow-intent href="https://*/*" />
+  <preference name="Orientation" value="portrait" />
+  <engine name="android" spec="^13.0.0" />
+  <plugin name="cordova-plugin-geolocation" spec="^5.0.0" />
+</widget>

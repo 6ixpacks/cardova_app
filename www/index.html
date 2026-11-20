@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: https: 'unsafe-inline'; connect-src https:; img-src * data: blob:">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Citizen Report</title>
+<style>
+:root{--ink:#14213d;--acc:#e8a200;--bg:#f5f7fa;--line:#d9dfe8}
+*{box-sizing:border-box;margin:0}
+body{font:16px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--ink);padding-bottom:78px}
+header{background:var(--ink);color:#fff;padding:14px 16px;font-weight:800;font-size:1.2rem;position:sticky;top:0;z-index:5}
+section{padding:14px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px}
+.chips button{flex:none;border:1.5px solid var(--ink);background:#fff;border-radius:99px;padding:6px 14px;font:inherit}
+.chips button.on{background:var(--ink);color:#fff}
+.inc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px}
+.inc img{width:100%;max-height:220px;object-fit:cover;border-radius:8px;margin:8px 0}
+.inc small{display:block;color:#4d5870;margin-top:4px}
+.map{display:inline-block;margin-top:6px;color:#0b57d0;font-weight:600}
+.tag{display:inline-block;background:var(--acc);border-radius:6px;padding:1px 9px;font-size:.8rem;font-weight:700;margin-bottom:4px}
+.note{text-align:center;color:#4d5870;padding:24px}
+label{display:block;font-weight:700;margin-top:12px}
+input,select,textarea{width:100%;font:inherit;padding:11px;border:1.5px solid var(--ink);border-radius:10px;background:#fff}
+.btn{width:100%;margin-top:16px;padding:14px;border:2px solid var(--ink);border-radius:10px;background:var(--acc);font:700 1rem system-ui;color:var(--ink)}
+.btn:disabled{opacity:.6}
+.link{background:none;border:0;color:#0b57d0;font:inherit;margin-top:14px;width:100%}
+#loc{margin-top:6px;color:#4d5870;font-size:.9rem}
+#prev{width:100%;max-height:200px;object-fit:cover;border-radius:8px;margin-top:8px}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#fff;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;padding:12px 0;border:0;background:none;font:600 .8rem system-ui;color:#4d5870;position:relative}
+nav button.on{color:var(--ink);box-shadow:inset 0 3px var(--acc)}
+#dot{position:absolute;top:8px;right:28%;width:10px;height:10px;border-radius:50%;background:#d93025}
+#toast{position:fixed;left:14px;right:14px;bottom:92px;background:var(--ink);color:#fff;padding:12px 14px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:9}
+#toast.show{opacity:1}
+</style></head>
+<body>
+<header>🚨 Citizen Report</header>
+<section id="v-feed"><div class="chips" id="chips"></div><div id="list"></div></section>
+<section id="v-report" hidden>
+  <form id="rf">
+    <label for="cat">Type of incident</label><select id="cat"></select>
+    <label for="ttl">Title</label><input id="ttl" required maxlength="80" placeholder="e.g. Car crash on Main Road">
+    <label for="dsc">What happened?</label><textarea id="dsc" rows="4" placeholder="Describe the incident"></textarea>
+    <label for="photo">Photo (take or choose)</label><input id="photo" type="file" accept="image/*" capture="environment">
+    <img id="prev" alt="Preview" hidden>
+    <p id="loc">📍 Getting your location…</p>
+    <button class="btn" id="send">Submit incident</button>
+  </form>
+</section>
+<section id="v-mine" hidden><div id="list2"></div></section>
+<section id="v-auth" hidden></section>
+<nav>
+  <button data-v="feed" class="on">📰 Feed<i id="dot" hidden></i></button>
+  <button data-v="report">➕ Report</button>
+  <button data-v="mine">📁 Mine</button>
+  <button data-v="auth" id="acct">👤 Login</button>
+</nav>
+<div id="toast"></div>
+<script src="cordova.js"></script>
+<script src="app.js"></script>
+</body></html>
